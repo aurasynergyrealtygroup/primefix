@@ -92,6 +92,10 @@ For `GOOGLE_PRIVATE_KEY`, paste the key with real newlines when prompted (or a
 single line with `\n` escapes — the code un-escapes it either way).
 
 **Local dev:**
+There's no `wrangler.toml` committed here on purpose — Cloudflare's Git-connected
+Pages builds auto-detect this as a Pages project, and a committed `wrangler.toml`
+can make the build system try to run it as a plain Worker instead (causing a
+"Missing entry-point" deploy error). If you want to preview locally, run:
 ```bash
 wrangler pages dev . --compatibility-date=2026-01-01
 ```

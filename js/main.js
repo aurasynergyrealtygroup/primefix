@@ -69,15 +69,22 @@ async function loadServices() {
 
 function ticketHTML(svc) {
   var noStr = String(svc.id).padStart(2, '0');
+  var photoSrc = svc.image || ('/images/services/' + svc.id + '.jpg');
   return (
     '<article class="ticket">' +
       '<span class="ticket-perf" aria-hidden="true"></span>' +
-      '<div class="ticket-head">' +
-        '<span class="ticket-no mono">SVC-' + noStr + '</span>' +
+      '<div class="ticket-photo">' +
         (svc.isNew ? '<span class="ticket-new">NEW</span>' : '') +
+        '<img src="' + photoSrc + '" alt="' + svc.name + '" loading="lazy" ' +
+          'onerror="this.closest(\'.ticket-photo\').style.display=\'none\'">' +
       '</div>' +
-      '<h3>' + svc.name + '</h3>' +
-      '<p>' + svc.description + '</p>' +
+      '<div class="ticket-body">' +
+        '<div class="ticket-head">' +
+          '<span class="ticket-no mono">SVC-' + noStr + '</span>' +
+        '</div>' +
+        '<h3>' + svc.name + '</h3>' +
+        '<p>' + svc.description + '</p>' +
+      '</div>' +
     '</article>'
   );
 }
