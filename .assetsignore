@@ -1,0 +1,6 @@
+src/
+wrangler.toml
+README.md
+.assetsignore
+.dev.vars
+node_modules/
